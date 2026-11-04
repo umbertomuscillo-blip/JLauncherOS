@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+}
+
+/* Zero-Resource Pause Engine: congela ogni animazione CSS quando il launcher è nascosto. */
+body.launcher-paused *,
+body.launcher-paused *::before,
+body.launcher-paused *::after {
+  animation-play-state: paused !important;
+}
+
+@keyframes lm-wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-1.2deg);
+  }
+  75% {
+    transform: rotate(1.2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.edit-wiggle {
+  animation: lm-wiggle 0.22s ease-in-out infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.edit-wiggle:nth-child(2n) {
+  animation-duration: 0.24s;
+  animation-delay: -0.05s;
+}
+
+.edit-wiggle:nth-child(3n) {
+  animation-duration: 0.2s;
+  animation-delay: -0.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .edit-wiggle {
+    animation: none !important;
+  }
+}

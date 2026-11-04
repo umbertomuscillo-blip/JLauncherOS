@@ -1,0 +1,200 @@
+:root {
+  --canvas-void: #07080a;
+  --surface-notch: #08090d;
+  --surface-glass: rgba(20, 21, 27, 0.56);
+  --surface-glass-elevated: rgba(32, 34, 42, 0.68);
+  --surface-clock: #111216;
+  --hairline-glass: rgba(255, 255, 255, 0.12);
+  --hairline-subtle: rgba(255, 255, 255, 0.07);
+  --ink-primary: #ffffff;
+  --ink-secondary: rgba(255, 255, 255, 0.72);
+  --ink-muted: rgba(255, 255, 255, 0.48);
+  --accent-red-hand: #ff3b30;
+  --accent-orange-timer: #ff9500;
+  --accent-blue-airdrop: #0a84ff;
+  --accent-cyan-folder: #38bdf8;
+  --accent-emerald: #30d158;
+
+  /* Apple Liquid Glass Specifications */
+  --liquid-glass-fill: linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 40%, rgba(4, 17, 28, 0.65) 100%);
+  --liquid-glass-border: 1px solid rgba(255, 255, 255, 0.15);
+  --liquid-glass-shadow: 0 28px 60px rgba(0, 0, 0, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  --liquid-glass-cyan-glow: 0 30px 66px rgba(0, 0, 0, 0.58), 0 0 0 1px rgba(130, 221, 255, 0.22), 0 0 34px rgba(106, 190, 255, 0.24);
+
+  /* Apple Spring & Motion Curves (taste-skill + apple-design) */
+  --ease-apple-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-apple-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas-void);
+  color: var(--ink-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  overflow: hidden;
+  caret-color: var(--accent-blue-airdrop);
+}
+
+::selection {
+  background: rgba(10, 132, 255, 0.35);
+  color: #ffffff;
+}
+
+/* Authentic Apple Liquid Glass Classes */
+.apple-liquid-glass {
+  background: var(--liquid-glass-fill);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border: var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-shadow);
+}
+
+.apple-liquid-glass-card {
+  background: linear-gradient(158deg, rgba(120, 232, 255, 0.14) 0%, rgba(103, 166, 255, 0.08) 34%, rgba(4, 17, 28, 0.72) 100%);
+  backdrop-filter: blur(32px) saturate(150%);
+  -webkit-backdrop-filter: blur(32px) saturate(150%);
+  border: 1px solid rgba(130, 221, 255, 0.24);
+  box-shadow: var(--liquid-glass-cyan-glow);
+}
+
+/* Subtle Glass Buttons */
+.apple-glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.22s var(--ease-apple-spring);
+}
+
+.apple-glass-pill:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.apple-glass-pill:active {
+  transform: translateY(0.5px) scale(0.98);
+}
+
+/* Custom Subtle macOS Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* Accessible Keyboard Focus Rings */
+button:focus-visible,
+input:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--accent-blue-airdrop);
+  outline-offset: 2px;
+}
+
+/* Range Input Styling for Music & Volume Scrubbers */
+input[type="range"].lm-scrubber {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].lm-scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+input[type="range"].lm-scrubber:hover::-webkit-slider-thumb {
+  transform: scale(1.25);
+}
+
+/* Floating App Icon Hover Lift with Authentic Apple Elasticity */
+.lm-app-tile {
+  transition: transform 0.24s var(--ease-apple-spring), filter 0.24s ease;
+  will-change: transform;
+}
+
+.lm-app-tile:hover {
+  transform: translateY(-4px) scale(1.05);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
+}
+
+.lm-app-tile:active {
+  transform: translateY(-1px) scale(0.97);
+}
+
+/* Action Stagger Entrances */
+@keyframes appleFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-apple-entrance {
+  animation: appleFadeInUp 0.36s var(--ease-apple-spring) both;
+}
+
+/* AirDrop Concentric Radar Pulse */
+@keyframes lm-radar-pulse {
+  0% {
+    transform: scale(0.88);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(0.88);
+    opacity: 0.85;
+  }
+}
+
+.lm-radar-ring {
+  animation: lm-radar-pulse 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Reduced Motion & Reduced Transparency Compliance (Apple HIG) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

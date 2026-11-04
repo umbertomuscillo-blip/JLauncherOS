@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- SEO: shorter, natural title so Google uses it in SERP (avoids rewrite). -->
+    <title>LaunchMe — Customizable App Launcher for Mac</title>
+    <!--
+      Meta description tuned for SEO and AI search:
+      - Clearly states LaunchMe is a Launchpad replacement.
+      - Mentions macOS 26 Tahoe and key differentiating features.
+    -->
+    <!-- SEO: 110-160 chars so Google uses full snippet without truncation. -->
+    <meta name="description" content="LaunchMe is the best Launchpad alternative for Mac on macOS 26 Tahoe. Full-screen launcher, folders, wallpapers, widgets, and more." />
+    <!-- Canonical URL: prevents duplicate content issues, consolidates SEO signals to one domain. -->
+    <link rel="canonical" href="https://launchmeapp.com/">
+    <!-- Ahrefs site verification: used by Ahrefs to confirm you own this site. -->
+    <meta name="ahrefs-site-verification" content="cca6e01ea57f6722a5edcc8e55db5b2fa40b6afdc05f466119b7898ae9eca551">
+    <!--
+      Landing page for LaunchMe
+      - Simple, modular HTML structure
+      - Styled via /css/style.css
+      - Interactions in /js/main.js
+      - Images replaced with placeholders to be swapped later
+      - Built for GitHub Pages (pure HTML/CSS/JS)
+    -->
+    
+    <!-- Favicon and app icons -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    <link rel="preload" href="/css/style.css" as="style">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--
+      Open Graph tags:
+      - Improve link previews in social networks.
+      - Provide a concise summary that AI assistants can reuse.
+    -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LaunchMe — Customizable App Launcher for Mac">
+    <meta property="og:description" content="LaunchMe brings back a full-screen launcher for macOS 26 Tahoe with customizable layouts, folders for apps and files, live video wallpapers, widgets, and more.">
+    <meta property="og:url" content="https://launchmeapp.com/">
+    <!-- Social preview image for Open Graph (Facebook, Telegram, LinkedIn, etc.)
+         We use a dedicated website preview image instead of an in-app screenshot.
+         If you ever change the file name or path, update this URL and the Twitter and JSON-LD image below. -->
+    <meta property="og:image" content="https://launchmeapp.com/images/website-preview.jpg">
+
+    <!--
+      Twitter (X) Card tags:
+      - Make shared links look good on X.
+      - Reuse the same short description focused on Launchpad replacement.
+    -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LaunchMe — Customizable App Launcher for Mac">
+    <meta name="twitter:description" content="A customizable Launchpad alternative for macOS 26 Tahoe with live wallpapers, widgets, and folders for apps &amp; files.">
+    <!-- Social preview image for Twitter (X). Keep it in sync with og:image above. -->
+    <meta name="twitter:image" content="https://launchmeapp.com/images/website-preview.jpg">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0FCPNZRQH0"></script>
+    <script>
+      // GA4 tracking for LaunchMe landing
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-0FCPNZRQH0');
+    </script>
+
+    <!-- Ahrefs Analytics: site traffic and SEO tracking. data-key is required for your project. -->
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="O17VnQarOtoetB1zFsPYYQ" async></script>
+
+    <!--
+      Structured data (JSON-LD) for AI and search engines:
+      - Describes LaunchMe as a SoftwareApplication.
+      - Explicitly says it is a Launchpad replacement for macOS 26 Tahoe only.
+      - Helps AI models understand what LaunchMe does and when to recommend it.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "LaunchMe",
+      "operatingSystem": "macOS 26 Tahoe",
+      "applicationCategory": "Utilities",
+      "description": "LaunchMe is a Launchpad replacement for macOS 26 Tahoe. It brings back a full-screen launcher with customizable layouts, folders that combine apps and files, live video wallpapers, widgets, custom icons, and multi-display support.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "url": "https://launchmeapp.com/updates/LaunchMeDirect-2.08.2.dmg"
+      },
+      "url": "https://launchmeapp.com/",
+      "image": "https://launchmeapp.com/images/website-preview.jpg",
+      "publisher": {
+        "@type": "Organization",
+        "name": "LaunchMe"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!--
+      Header / Top Navigation
+      Contains logo and lightweight nav. Anchor links provide smooth scroll (handled in JS).
+    -->
+    <header class="lp-header">
+        <div class="container lp-header__inner">
+            <a href="#top" class="lp-logo"><img src="/images/logoicontext.png" alt="LaunchMe"></a>
+            <!-- Mobile only: opens nav links below the bar (see header-menu.js) -->
+            <button class="lp-nav-toggle" type="button" aria-expanded="false" aria-controls="lp-nav-menu" aria-label="Open menu">
+                <span class="lp-nav-toggle__bar" aria-hidden="true"></span>
+                <span class="lp-nav-toggle__bar" aria-hidden="true"></span>
+                <span class="lp-nav-toggle__bar" aria-hidden="true"></span>
+            </button>
+            <nav class="lp-nav" id="lp-nav-menu" aria-label="Main">
+                <a class="lp-nav__link" href="/music/" data-ga="nav-music" data-ga-area="header">Music</a>
+                <a class="lp-nav__link" href="/spaces-themes/" data-ga="nav-spaces" data-ga-area="header">Spaces</a>
+                <a class="lp-nav__link" href="/pricing/" data-ga="nav-pricing" data-ga-area="header">Pricing</a>
+                <a class="lp-btn lp-nav__download" href="/updates/LaunchMeDirect-2.08.2.dmg" data-ga="direct-dmg" data-ga-area="header">Download</a>
+            </nav>
+        </div>
+    </header>
+    <script src="/js/header-scroll.js" defer></script>
+    <script src="/js/header-menu.js" defer></script>
+
+
+
+
+    <!-- Hero Section -->
+    <main id="top">
+        <section class="hero">
+            <div class="container hero-inner">
+                <p class="hero-eyebrow">
+                    <svg class="apple-glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                    Workspace manager for your Mac
+                </p>
+                <h1 class="hero-title">The Launchpad replacement<br>macOS 26 - 27 deserves.</h1>
+                <p class="hero-sub">LaunchMe brings automations, file search, live wallpapers, widgets, and deep customization into one beautiful full-screen launcher built for macOS 26 & 27.</p>
+                <div class="cta-group">
+                    <!-- LAUNCHME_HERO_CTA_BEGIN -->
+                    <a class="lp-btn lp-btn--lg" href="/updates/LaunchMeDirect-2.08.2.dmg" data-ga="direct-dmg" data-ga-area="hero">
+                        <svg class="apple-glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                        Download for macOS
+                    </a>
+                    <!-- LAUNCHME_HERO_CTA_END -->
+                </div>
+                <p class="hero-facts">Customizable &nbsp;·&nbsp; Live wallpapers &nbsp;·&nbsp; Automations &nbsp;·&nbsp; Widgets &nbsp;·&nbsp; Spaces</p>
+                <!-- Hero scene: interactive full-bleed mountains behind the laptop image.
+                     - data-layer-top   = main/visible layer (shown by default)
+                     - data-layer-reveal = layer revealed in a fluid blob around the cursor
+                     The reveal is painted on a <canvas>; the top layer is the element's
+                     CSS background, so it still shows if JS is off. -->
+                <div class="hero-scene">
+                    <div class="hero-interactive" data-interactive aria-hidden="true"
+                         data-layer-top="/images/Interactive/interactive-layer-2.png"
+                         data-layer-reveal="/images/Interactive/interactive-layer-1.png">
+                        <canvas class="hero-interactive__canvas"></canvas>
+                    </div>
+                    <!-- Hero image now sits below the text and CTA -->
+                    <img class="hero-image" src="/images/topimage.png" alt="LaunchMe preview" />
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Notch integration: intro + image-only carousel (same slider as ai-explore) ===== -->
+        <section id="notch" class="section ai-explore notch-explore">
+            <div class="container">
+                <p class="ai-vi__eyebrow">New feature</p>
+                <h2 class="ai-vi__title notch-explore__headline">
+                    <span class="notch-explore__hello-line">
+                        Hello
+                        <img class="notch-explore__logo" src="/images/notch/notch-logo.svg" alt="Notch" width="186" height="67">
+                    </span>
+                    <span class="notch-explore__gradient-line">Better together.</span>
+                </h2>
+                <p class="ai-vi__sub">LaunchMe is incredible on its own. But when you use it together with Notch, they work wonders. Thanks to the seamlessly integrated Widgets and Spaces features, which let you customize your Notch with different backgrounds and layouts, and automatically switch between them along with your Spaces. Add apps, folders, or even workflow icons! It works just like magic!</p>
+            </div>
+            <div class="ai-explore__viewport" data-explore>
+                <div class="ai-explore__track" data-explore-track>
+                    <article class="ai-stage ai-stage--media-only" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/notch/notch-slider-1.jpg" alt="Notch and LaunchMe integration preview">
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--media-only" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/notch/notch-slider-2.jpg" alt="Notch and LaunchMe integration preview">
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--media-only" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/notch/notch-slider-3.jpg" alt="Notch and LaunchMe integration preview">
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--media-only" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/notch/notch-slider-4.jpg" alt="Notch and LaunchMe integration preview">
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--media-only" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/notch/notch-slider-5.jpg" alt="Notch and LaunchMe integration preview">
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--media-only" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/notch/notch-slider-6.jpg" alt="Notch and LaunchMe integration preview">
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--media-only" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/notch/notch-slider-7.jpg" alt="Notch and LaunchMe integration preview">
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--media-only" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/notch/notch-slider-8.jpg" alt="Notch and LaunchMe integration preview">
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="container ai-explore__controls">
+                <div class="ai-explore__dots" data-explore-dots aria-label="Slides"></div>
+                <button class="ai-explore__play" type="button" data-explore-play aria-label="Pause">
+                    <svg class="ai-explore__icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                    <svg class="ai-explore__icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Intro / Features preview grid -->
+        <section id="features" class="section features">
+            <div class="container">
+                <!-- Section intro (ported from the white minimalist version) -->
+                <p class="section-kicker">Features</p>
+                <h2 class="section-title">Everything Launchpad had.<br>And a lot it didn't.</h2>
+                <p class="section-sub">A full-screen launcher built for the way you actually work. Search and open files, use Clipboard, and make it yours.</p>
+                <!-- Demo using new reusable card components -->
+                <div class="lm-cards-row" style="margin-bottom:30px;">
+                    <!-- Wide card example -->
+                    <article class="lm-card lm-card--wide" style="background-image: none; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: scroll;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Files - Search, copy, delete, preview</h3>
+                        </div>
+                        <!-- foreground image anchored to bottom -->
+                        <img class="lm-card__image" src="/images/liquid-glass.png" alt="Liquid glass preview">
+                    </article>
+                </div>
+
+                <div class="lm-cards-row lm-cards-row--split">
+                    <!-- Square card example 1 -->
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;"> 
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Music Widgets</h3>
+                            <p class="lm-card__subtitle">Spotify and Apple Music<br>with 3 customizable styles</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/layout-freedom.png" alt="Layout freedom preview">
+                    </article>
+
+                    <!-- Square card example 2 -->
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Add Folders</h3>
+                            <p class="lm-card__subtitle">Combine your apps with<br>fast access to folders</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/add-folder.png" alt="Add folder preview">
+                    </article>
+                </div>
+
+                <!-- Additional square cards row: Clipboard & Calculator -->
+                <!-- We add top margin here to visually separate this row from the row above,
+                     using the same 30px spacing pattern as other card rows on the page. -->
+                <div class="lm-cards-row lm-cards-row--split" style="margin-top:30px;">
+                    <!-- Clipboard card -->
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Clipboard</h3>
+                            <p class="lm-card__subtitle">Easy access to history<br>of copied files and text</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/clipboard.png" alt="Clipboard history preview">
+                    </article>
+
+                    <!-- Calculator card -->
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Calculator</h3>
+                            <p class="lm-card__subtitle">Built into the search bar</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/calculator.png" alt="Calculator with search field preview">
+                    </article>
+                </div>
+
+                <!-- Wide card: Dynamic weather and sun wallpapers -->
+                <div class="lm-cards-row" style="margin-top:30px;">
+                    <article class="lm-card lm-card--wide" style="background-image: none; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: scroll;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Dynamic weather and sun wallpapers</h3>
+                        </div>
+                        <img class="lm-card__image" src="/images/dynamic-weather.png" alt="LaunchMe Dynamic Weather and Sun wallpapers — real-time sky and weather on your launcher">
+                    </article>
+                </div>
+
+                <!-- Square cards row: Spaces & Workflows -->
+                <div class="lm-cards-row lm-cards-row--split" style="margin-top:30px;">
+                    <!-- Spaces card -->
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Spaces</h3>
+                            <p class="lm-card__subtitle">Create Spaces for any mood or scenarios</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/spaces.png" alt="LaunchMe Spaces — workspace manager to save layouts, widgets, folders, and switch by hotkey or schedule">
+                    </article>
+
+                    <!-- Workflows card -->
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Workflows</h3>
+                            <p class="lm-card__subtitle">One click will launch all apps and files you need</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/workflows.png" alt="LaunchMe Workflows — automation to launch multiple apps and folders with one click">
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Apple "Explore what's new" big-card carousel (before "Make it yours") =====
+             One large card centered with neighbours peeking; caption sits on the media.
+             Segmented progress + play/pause controls below.
+             Swap each .ai-stage__media placeholder for an <img>/<video> when ready. -->
+        <section id="intelligence" class="section ai-explore">
+            <div class="container">
+                <h2 class="ai-explore__title">LaunchMe can be what you want<br>And even more</h2>
+            </div>
+            <div class="ai-explore__viewport" data-explore>
+                <div class="ai-explore__track" data-explore-track>
+                    <article class="ai-stage ai-stage--light" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/Carusel%201/1.jpg" alt="">
+                            <p class="ai-stage__caption"><strong>Categories cards.</strong> Find your recently used, hidden and other apps grouped by categories</p>
+                        </div>
+                    </article>
+                    <article class="ai-stage" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/Carusel%201/2.jpg" alt="">
+                            <p class="ai-stage__caption"><strong>Built for everyday tasks.</strong> Customize your LaunchMe to match your current workflow for work or study.</p>
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--light" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/Carusel%201/3.jpg" alt="">
+                            <p class="ai-stage__caption"><strong>Apps &amp; Widgets.</strong> Organize apps and widgets, to build the best control center on your Mac.</p>
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--light" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/Carusel%201/4.jpg" alt="">
+                            <p class="ai-stage__caption"><strong>Spaces &amp; Workflows.</strong> Save presets for any workflow and launch entire setups with one click.</p>
+                        </div>
+                    </article>
+                    <article class="ai-stage" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/Carusel%201/5.jpg" alt="">
+                            <p class="ai-stage__caption"><strong>Music widgets.</strong> Control Spotify and Apple Music with widgets and customize it the way you feel.</p>
+                        </div>
+                    </article>
+                    <article class="ai-stage" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/Carusel%201/6.jpg" alt="">
+                            <p class="ai-stage__caption"><strong>Files.</strong> Group apps with your work files to have fast access to everything for your projects.</p>
+                        </div>
+                    </article>
+                    <article class="ai-stage ai-stage--light" data-explore-slide>
+                        <div class="ai-stage__media">
+                            <img src="/images/Carusel%201/7.jpg" alt="">
+                            <p class="ai-stage__caption"><strong>Weather widgets.</strong> Eight styles, four sizes - unlimited ways to customize and check your weather</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="container ai-explore__controls">
+                <div class="ai-explore__dots" data-explore-dots aria-label="Slides"></div>
+                <button class="ai-explore__play" type="button" data-explore-play aria-label="Pause">
+                    <svg class="ai-explore__icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+                    <svg class="ai-explore__icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Customization Section -->
+        <section id="customization" class="section customization">
+            <div class="container">
+                <p class="section-kicker">Customization</p>
+                <h2 class="section-title">Make it yours</h2>
+                <p class="section-sub">Customize LaunchMe to match your vibe - cozy, minimalistic, or anything you want.<br>Make it truly yours</p>
+                <!-- Use only new card components -->
+                <div class="lm-cards-row lm-cards-row--split">
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Folder Styles</h3>
+                            <p class="lm-card__subtitle">Colors, emoji, cover image</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/custom-folders.png" alt="Custom folders preview">
+                    </article>
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Icon customization</h3>
+                            <p class="lm-card__subtitle">Change any app icons<br>to follow your style</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/custom-icons.png" alt="Icon customization preview">
+                    </article>
+                </div>
+
+                <!-- Wide -->
+                <div class="lm-cards-row" style="margin:30px 0;">
+                    <article class="lm-card lm-card--wide" style="background-image: none; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: scroll;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Set custom wallpaper - static, dynamic or even LIVE</h3>
+                        </div>
+                        <img class="lm-card__image" src="/images/dynamic-wallpaper.png" alt="Dynamic wallpaper preview">
+                    </article>
+                </div>
+
+                <!-- Squares -->
+                <div class="lm-cards-row lm-cards-row--split">
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">You Rule Here</h3>
+                            <p class="lm-card__subtitle">Hide app names or<br>completely hide apps</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/hide-apps.png" alt="Hide apps preview">
+                    </article>
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Icon Size</h3>
+                            <p class="lm-card__subtitle">Adjust icon size<br>to better fit your screen</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/icons-size.png" alt="Icon size preview">
+                    </article>
+                </div>
+
+                <!-- Wide: monitor image fills the entire rounded card -->
+                <div class="lm-cards-row" style="margin-top:30px;">
+                    <article class="lm-card lm-card--wide lm-card--media-fill lm-card--music-preview" style="--card-bg-color:transparent;">
+                        <div class="lm-card__content music-preview__content">
+                            <p class="lm-card__title">A new way to listen to music on Mac</p>
+                            <h3 class="lm-card__subtitle">Explore LaunchMe Music</h3>
+                            <a class="music-preview__link" href="/music/">Learn More</a>
+                        </div>
+                        <img class="lm-card__image" src="/images/monitor-image.png" alt="LaunchMe Music vinyl player on a MacBook">
+                    </article>
+                </div>
+
+                <!-- Squares -->
+                <div class="lm-cards-row lm-cards-row--split" style="margin-top:30px;">
+                    <article class="lm-card lm-card--square" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">System Icon Appearance</h3>
+                            <p class="lm-card__subtitle">Dark | Light | Tinted</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/system-icons.png" alt="System icons preview">
+                    </article>
+                    <article class="lm-card lm-card--square lm-card--white-text" style="--card-bg-color:#f5f5f7;">
+                        <div class="lm-card__content">
+                            <h3 class="lm-card__title">Clear Colored Icons</h3>
+                            <p class="lm-card__subtitle">A unified style with Glass<br>and colored icons.</p>
+                        </div>
+                        <img class="lm-card__image" src="/images/clear-colored.png" alt="Clear colored icons preview">
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Big Screenshot / Gallery Section -->
+        <section id="gallery" class="section gallery">
+            <div class="container" data-gallery-scrub>
+                <!-- Scroll-driven stage: sticky block that scrubs with scroll -->
+                <div class="gallery-stage" data-gallery-stage data-video-src="/images/demo.mp4" data-video-loop="true" data-video-muted="true" data-video-autoplay="true" style="--screen-left:9%; --screen-top:2%; --screen-width:82%; --screen-aspect-ratio:1.54; --screen-radius:2px; --stage-final-shift-y:100px; --screen-offset-y: -12px; --mobile-stage-width: 92vw;">
+                    <img class="gallery-stage__image" src="/images/showmacimg.png" alt="LaunchMe on Mac">
+                    <!--
+                      Overlay video container:
+                      - The video is absolutely positioned to simulate playing inside the laptop screen.
+                      - Use inline CSS variables to fine-tune placement if needed.
+                      - Example: set data-video-src on the stage to auto-inject a <video> via JS.
+                    -->
+                    <div class="gallery-stage__video" aria-hidden="true">
+                        <div class="gallery-stage__video-box"></div>
+                    </div>
+                    <div class="gallery-stage__overlay" aria-hidden="true"></div>
+                    <div class="gallery-stage__label" aria-hidden="true">Yes, it’s live</div>
+                </div>
+            </div>
+            <!-- Moved caption outside of the sticky container to ensure it appears below the image -->
+            <p class="gallery-caption">Set animated live wallpapers to match your mood in the moment. They'll make LaunchMe always fit your style and surroundings.<br>You can use MP4, MOV, AVI, MKV formats.</p>
+        </section>
+
+        <!--
+          LaunchMe Features Section
+          - Placed right before FAQ
+          - Uses a simple 4x5 grid layout (4 columns, 5 rows on desktop)
+          - For now we only show text placeholders instead of real icons
+          - Icons will be added later but HTML structure stays the same
+        -->
+        <!-- ===== Apple "Visual Intelligence" full-bleed carousel (before "LaunchMe Features") =====
+             Each card = rounded media on top + bold caption text below on the page.
+             Mixed card widths; the track runs full-bleed and scrolls off the page edge.
+             Swap each .ai-media placeholder for an <img>/<video> when assets are ready. -->
+        <section id="explore" class="section ai-vi">
+            <div class="container">
+                <p class="ai-vi__eyebrow">Inside LaunchMe</p>
+                <h2 class="ai-vi__title">Everything you need, and so much more.</h2>
+                <p class="ai-vi__sub">A closer look at the features that make LaunchMe more useful every day - on every Mac.</p>
+            </div>
+            <div class="ai-vi__track" data-vi-track>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/delete-app.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Clean Uninstall.</strong> Remove the app from Mac and clean leftover settings, cache, and related traces. Files will be moved to Trash so you can restore them later or completely delete.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-sorting.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Smart sorting.</strong> Arrange apps by name, group in folders automaticaly, or restore your Launchpad layout.</p>
+                </article>
+                <article class="vi-card vi-card--wide">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-folder-window.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Folder batch creating.</strong> Choose apps you want to add to the new folder and add files from Finder. This is the fastest way to create folders witout moving apps one by one.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-spaces.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Spaces.</strong> Save layouts, widgets, wallpaper, icons and folders as presets, then switch between them in one shortcut or by schedule.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-workflows.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Workflows.</strong> Launch every app and file you need for a task with a single click.</p>
+                </article>
+                <article class="vi-card vi-card--wide">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-girl.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>For any aesthetic.</strong> You minimalist, gamer or love cute cozy customization? LaunchMe is here to be anything you want with unlimited ways to customize it.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-emoji.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Emoji & Symbols.</strong> Fast access in Search bar to Emoji & Sumbols. Search, pin, find recently used.</p>
+                </article>
+                <article class="vi-card vi-card--wide">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-clipboard.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Clipboard.</strong> Jump back to anything you copied from text to files, folders and links - right from Search bar.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-gestures.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Trackpad gesture.</strong> Open LaunchMe with a pinch, just like the original Launchpad.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-hotcorners.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Hot corners.</strong> Flick to a screen corner to open your launcher instantly.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-folders.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Folders.</strong> Just drag any app on top of another one to create a new folder. Works also with Workflows icons.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-glass-customization.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Liquid Glass.</strong> A unified glass look with clear, colored icons that you can customize with any color you want for whole interface.</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-animation.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Animations.</strong> Widgets with cute cats animations. There will be more characters in future</p>
+                </article>
+                <article class="vi-card vi-card--narrow">
+                    <div class="vi-card__media ai-media"><img src="/images/Carusel%202/carusel-rename.jpg" alt=""></div>
+                    <p class="vi-card__text"><strong>Rename apps.</strong> Give any app the name you want - your launcher, your labels.</p>
+                </article>
+            </div>
+            <div class="container ai-vi__nav">
+                <button class="ai-vi__btn" type="button" data-vi-prev aria-label="Previous">
+                    <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="ai-vi__btn" type="button" data-vi-next aria-label="Next">
+                    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <section id="launchme-features" class="section lm-features">
+            <div class="container">
+                <h2 class="section-title">LaunchMe Features</h2>
+                <!--
+                  Subheading tuned for AI and SEO:
+                  - Explicitly connects LaunchMe to Launchpad and macOS 26 Tahoe.
+                  - Mentions key differentiating features in one simple sentence.
+                -->
+                <p class="section-sub">Everything you loved about Launchpad, plus live video wallpapers, widgets, file access, and deep customization — built for macOS 26 Tahoe.</p>
+                <!--
+                  Grid with 20 feature tiles.
+                  - Each tile = icon placeholder + short title + optional subtitle
+                  - Order and naming follow the provided screenshot as close as possible.
+                -->
+                <div class="grid grid-4 lm-features-grid">
+                    <!-- Row 1 -->
+                    <article class="lm-feature-tile">
+                        <!-- Trackpad gesture icon lives in help images folder -->
+                        <img class="lm-feature-icon" src="/images/help/gesture-icon.png" alt="Trackpad gesture icon">
+                        <!--
+                          Title + text-button on the second line.
+                          We keep it inside one heading so both lines share the same font and style.
+                        -->
+                        <h3 class="lm-feature-title">
+                            Trackpad Gesture<br>
+                            <a class="lm-feature-link" href="https://launchmeapp.com/help/#pinch-gesture" target="_blank" rel="noopener noreferrer">
+                                Download here
+                            </a>
+                        </h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/live-wallpaper-icon.svg" alt="Live wallpaper icon">
+                        <h3 class="lm-feature-title">Live Wallpaper<br>AVI, MP4, MOV, MKV</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/widgets-icon.svg" alt="Widgets icon">
+                        <h3 class="lm-feature-title">Widgets</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/glass-icon.png" alt="Liquid glass icon">
+                        <h3 class="lm-feature-title">Liquid Glass</h3>
+                    </article>
+
+                    <!-- Row 2 -->
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/dynamic-wallpaper-icon.svg" alt="Dynamic wallpaper icon">
+                        <h3 class="lm-feature-title">Dynamic Wallpaper</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/files-fast-icon.svg" alt="Files fast access icon">
+                        <h3 class="lm-feature-title">Files Fast Access</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/free-layout-icon.svg" alt="Free layout icon">
+                        <h3 class="lm-feature-title">Free Layout</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/custom-icons-icon.svg" alt="Custom icons icon">
+                        <h3 class="lm-feature-title">Custom Icons<br>Change any icon</h3>
+                    </article>
+
+                    <!-- Row 3 -->
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/hide-app-icon.svg" alt="Hide apps icon">
+                        <h3 class="lm-feature-title">Hide Apps<br>Keep space clean</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/custom-files-icon.svg" alt="Custom files and folders icon">
+                        <h3 class="lm-feature-title">Custom Files &amp; Folders</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/clear-colored-icon.svg" alt="Clear colored icons icon">
+                        <h3 class="lm-feature-title">Clear Colored Icons<br>Glass + color</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/categories-icon.svg" alt="Categories page icon">
+                        <h3 class="lm-feature-title">Categories Page</h3>
+                    </article>
+
+                    <!-- Row 4 -->
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/tinted-icon.svg" alt="System app icons icon">
+                        <h3 class="lm-feature-title">System App Icons<br>Tinted · Dark · Light</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/key-shortcut-icon.svg" alt="Custom launch shortcut icon">
+                        <h3 class="lm-feature-title">Custom Launch Shortcut<br>Your own hotkey</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/hide-title-icon.svg" alt="Hide titles icon">
+                        <h3 class="lm-feature-title">Hide Titles<br>Minimal look</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/dark-mode-icon.svg" alt="System dark/light mode icon">
+                        <h3 class="lm-feature-title">System Dark/Light<br>Mode support</h3>
+                    </article>
+
+                    <!-- Row 5 -->
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/full-screen-icon.svg" alt="Full screen mode icon">
+                        <h3 class="lm-feature-title">Full Screen Mode<br>Immersive launcher</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/many-screen-icon.svg" alt="Many screens icon">
+                        <h3 class="lm-feature-title">Many Screens<br>Multi‑display support</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/hot-corners-icon.svg" alt="Hot corners icon">
+                        <h3 class="lm-feature-title">Hot Corners<br>Free to use</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/icon-size-icon.svg" alt="Control icon size icon">
+                        <h3 class="lm-feature-title">Control Icon Size<br>Adjust grid size</h3>
+                    </article>
+
+                    <!-- Row 6: Files search, Clipboard, Calculator, Extra app sources -->
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/files-search-icon.svg" alt="Files search icon">
+                        <h3 class="lm-feature-title">Files Search<br>Copy, open and more</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/clipboard-icon.svg" alt="Clipboard icon">
+                        <h3 class="lm-feature-title">Clipboard<br>Text, files, links</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/calculator-icon.svg" alt="Calculator icon">
+                        <h3 class="lm-feature-title">Calculator<br>In search field</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/extra-app-icon.svg" alt="Extra app sources icon">
+                        <h3 class="lm-feature-title">Extra App Sources<br>Scan apps anywhere</h3>
+                    </article>
+
+                    <!-- Row 7: Spaces, Workflows, Themes, Sun Wallpaper -->
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/square.stack.3d.down.right.fill%201.svg" alt="Spaces icon">
+                        <h3 class="lm-feature-title">Spaces<br>Create presets</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/workflows-icon.svg" alt="Workflows icon">
+                        <h3 class="lm-feature-title">Workflows<br>Launch automations</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/themes-icon.svg" alt="Themes icon">
+                        <h3 class="lm-feature-title">Themes<br>Change manually</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/sun-wallpaper-icon.svg" alt="Sun wallpaper icon">
+                        <h3 class="lm-feature-title">Sun Wallpaper<br>Dynamic by time</h3>
+                    </article>
+
+                    <!-- Row 8: Weather Wallpaper, Support, iCloud sync, Ask Ai -->
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/weather-wallpaper-icon.svg" alt="Weather wallpaper icon">
+                        <h3 class="lm-feature-title">Weather Wallpaper<br>Real time in any city</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/languages-icon.svg" alt="Support languages icon">
+                        <h3 class="lm-feature-title">Support<br>18 languages</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/icloud-icon.svg" alt="iCloud sync icon">
+                        <h3 class="lm-feature-title">iCloud Sync<br>Soon</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/ai-icon.svg" alt="Ask Ai icon">
+                        <h3 class="lm-feature-title">Ask Ai<br>Soon</h3>
+                    </article>
+
+                    <!-- Row 9: Rename apps, Emoji & Symbols, Weather Widgets, Music Widgets -->
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/rename-apps-icon.svg" alt="Rename apps icon">
+                        <h3 class="lm-feature-title">Rename apps</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/face-icon.svg" alt="Emoji and symbols icon">
+                        <h3 class="lm-feature-title">Emoji &amp; Symbols<br>in search bar</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/weather-widgets-icon.svg" alt="Weather widgets icon">
+                        <h3 class="lm-feature-title">Weather Widgets<br>8 Styles, 4 sizes</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/music-widgets-icon.svg" alt="Music widgets icon">
+                        <h3 class="lm-feature-title">Music Widgets<br>Spotify &amp; Apple Music</h3>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMP: LaunchMe Notch feature grid — hidden until copy/icons are final.
+        <section id="launchme-notch" class="section lm-features lm-features--notch">
+            <div class="container">
+                <h2 class="section-title">LaunchMe Notch</h2>
+                <p class="section-sub">Widgets, apps, Clipboard, and customization inside your MacBook notch. Syncs with LaunchMe Spaces automatically.</p>
+                <div class="grid grid-4 lm-features-grid">
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/widgets-icon.svg" alt="Notch widgets icon">
+                        <h3 class="lm-feature-title">Notch Widgets<br>Music, Weather &amp; more</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/custom-files-icon.svg" alt="Apps and folders in Notch icon">
+                        <h3 class="lm-feature-title">Apps &amp; Folders<br>Add to Notch</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/clipboard-icon.svg" alt="Notch Clipboard icon">
+                        <h3 class="lm-feature-title">Notch Clipboard<br>Preview cards</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/glass-icon.png" alt="Notch customization icon">
+                        <h3 class="lm-feature-title">Customization<br>Glass, black, image</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/files-fast-icon.svg" alt="AirDrop and Pocket icon">
+                        <h3 class="lm-feature-title">AirDrop &amp; Pocket<br>Drop files to Notch</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/calculator-icon.svg" alt="Notch Timer icon">
+                        <h3 class="lm-feature-title">Timer<br>Countdown in notch</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/weather-widgets-icon.svg" alt="Compact Notch icon">
+                        <h3 class="lm-feature-title">Compact Notch<br>Weather &amp; Now Playing</h3>
+                    </article>
+                    <article class="lm-feature-tile">
+                        <img class="lm-feature-icon" src="/images/features/key-shortcut-icon.svg" alt="Notch settings icon">
+                        <h3 class="lm-feature-title">Settings<br>Hover, size &amp; displays</h3>
+                    </article>
+                </div>
+            </div>
+        </section>
+        -->
+
+        <!--
+          Supported Languages Section
+          - Placed between LaunchMe Features and FAQ as requested.
+          - SEO/GEO note: the subtitle explicitly says "supported languages"
+            and "localization", so search engines and AI assistants can better
+            understand language availability for LaunchMe.
+          - We use a semantic list (<ul>) for cleaner machine parsing.
+        -->
+        <section id="supported-languages" class="section supported-languages">
+            <div class="container">
+                <h2 class="section-title">Supported Languages</h2>
+                <!--
+                  GEO/AI-friendly subtitle:
+                  - Includes product name + clear "language support" intent.
+                  - Helps answer user queries like:
+                    "What languages does LaunchMe support?"
+                -->
+                <p class="section-sub">LaunchMe supports interface localization in major global languages, helping users launch apps and organize workflows in their native language on macOS 26 Tahoe.</p>
+
+                <!--
+                  Language flags list:
+                  - Every item has icon + visible language name.
+                  - alt text is explicit for accessibility and AI parsing.
+                -->
+                <ul class="languages-grid" aria-label="LaunchMe supported languages">
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/united states.png" alt="English language flag">
+                        <span class="language-name">English</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/germany.png" alt="German language flag">
+                        <span class="language-name">German</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/spain.png" alt="Spanish language flag">
+                        <span class="language-name">Spanish</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/brazil.png" alt="Portuguese language flag">
+                        <span class="language-name">Portuguese</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/turkey.png" alt="Turkish language flag">
+                        <span class="language-name">Turkish</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/france.png" alt="French language flag">
+                        <span class="language-name">French</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/portugal.png" alt="Portuguese from Portugal language flag">
+                        <span class="language-name">Portuguese <span class="language-note">(Portugal)</span></span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/south korea.png" alt="Korean language flag">
+                        <span class="language-name">Korean</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/china.png" alt="Chinese language flag">
+                        <span class="language-name">Chinese</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/japan.png" alt="Japanese language flag">
+                        <span class="language-name">Japanese</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/india.png" alt="Hindi language flag">
+                        <span class="language-name">Hindi</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/russia.png" alt="Russian language flag">
+                        <span class="language-name">Russian</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/italy.png" alt="Italian language flag">
+                        <span class="language-name">Italian</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/vietnam.png" alt="Vietnamese language flag">
+                        <span class="language-name">Vietnamese</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/indonesia.png" alt="Indonesian language flag">
+                        <span class="language-name">Indonesian</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/ukraine.png" alt="Ukrainian language flag">
+                        <span class="language-name">Ukrainian</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/philippines.png" alt="Filipino language flag">
+                        <span class="language-name">Filipino</span>
+                    </li>
+                    <li class="language-item">
+                        <img class="language-flag" src="/images/flags/poland.png" alt="Polish language flag">
+                        <span class="language-name">Polish</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section faq">
+            <div class="container">
+                <h2 class="section-title">FAQ</h2>
+                <!--
+                  Accessible accordion: buttons control hidden panels. All wired in JS.
+                -->
+                <div class="accordion" data-accordion>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Is LaunchMe a good Launchpad alternative for macOS 26?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>Yes. LaunchMe is built specifically as a Launchpad replacement for macOS 26 Tahoe. It restores the full-screen app launcher experience with more customization, file search, and folder support. <a href="/blog/">Read our comparison with other launchers</a>.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">What is LaunchMe?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>As macOS Tahoe removed the original Launchpad, but we loved it so much, we decided to create our own version of it - the way macOS deserves. It has customization options to let users make their workspace more inspiring and perfect for them. Also, you can group apps and folders for fast access to your files right from LaunchMe. Folders are also customizable, and you can set your own color, cover image, or emoji.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">How to start using LaunchMe?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>Download LaunchMe from the Mac App Store - it's easy. You can use it for free, or unlock full access with a subscription or a lifetime license.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Can I try Pro for free?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>Yes. You can use the 7-day Free Trial to try out LaunchMe PRO. Purchase LaunchMe PRO or LITE to unlock premium features.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">What will I get in PRO or LITE?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>In PRO, you will get access to all premium features of LaunchMe such as wallpapers, folder customization, hide apps, hide titles, Liquid Glass Theme, and many other features we will add in the future. LITE is made for users who don't need customization but want to support us and still get part of the premium features such as Liquid Glass, Hide Apps, and Hide Titles.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Can I set my own files for Wallpapers?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>Yes, we have 3 types of wallpaper:<br>
+                            • Image: choose any image you want in .PNG or .JPG.<br>
+                            • Dynamic: this wallpaper will adapt to your current Dark/Light mode. Use .HEIC format.<br>
+                            • Live: set your video file in formats: MP4, MOV, AVI, MKV.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Does LaunchMe impact performance or battery?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>LaunchMe is optimized not to impact your system and uses minimal resources. When LaunchMe is hidden, it uses none of your resources and all processes are paused until you open the window.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Does it work with multiple displays?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>Yes. LaunchMe will open a full-screen window on the monitor where your cursor is located. Make sure your cursor is not located on a display with another full-screen app.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Do I need to register an account?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>No. You only need to be logged in to your Apple iCloud account on your Mac. Your subscription will be managed by Apple.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Can I cancel my subscription?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>Yes. You can cancel anytime in the subscription manager of your Apple Account.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Why does LaunchMe ask for permission to control my Mac?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>LaunchMe needs user permission to launch apps on your computer and read the Applications folder. LaunchMe does not collect any information from your computer. All information needed for LaunchMe to work (like apps or folder paths) is managed locally on your computer.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Can I use Pinch Gesture to open LaunchMe?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>
+                                Yes! The gesture feature is a private macOS feature, and Apple does not allow us to use it in AppStore.
+                                But you can download our small free background app LaunchMe – Gestures that allows you to use trackpad to invoke LaunchMe.
+                                <a class="faq-link" href="https://launchmeapp.com/help/#pinch-gesture" target="_blank" rel="noopener noreferrer">
+                                    Learn more here
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--
+                      AI-search-optimized FAQ:
+                      - These questions are written like real queries users ask AI assistants.
+                      - Answers are structured with short intro + lists so LLMs can easily reuse them.
+                      - We explicitly mention Launchpad, macOS 26 Tahoe and key LaunchMe advantages.
+                    -->
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">What is the best replacement for Launchpad on macOS 26 Tahoe?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>LaunchMe is the best replacement for Launchpad on macOS 26 Tahoe. When Apple removed Launchpad in macOS 26 Tahoe, LaunchMe was created to fill that gap with even more features than the original Launchpad had.</p>
+                            <p><strong>LaunchMe offers everything Launchpad had, plus:</strong></p>
+                            <ul>
+                                <li>Customizable layouts - place apps exactly where you want</li>
+                                <li>Live video wallpapers (MP4, MOV, AVI, MKV) - something Launchpad never had</li>
+                                <li>Widgets support for customization inside the launcher</li>
+                                <li>Folder customization with colors, emoji, and cover images</li>
+                                <li>Custom app icons and system icon themes (Dark, Light, Tinted)</li>
+                                <li>Fast file access - organize apps and folders together in one launcher</li>
+                                <li>Multi-display support - works seamlessly across all your monitors</li>
+                                <li>Files Search, Copy files, Copy path, Delete, Preview or show in Finder </li>
+                            </ul>
+                            <p>LaunchMe is available on the Mac App Store and works on macOS 26 Tahoe</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">How can I get Launchpad back on macOS 26 Tahoe?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>Since Apple removed Launchpad in macOS 26 Tahoe, you can't get the original Launchpad back. However, LaunchMe provides a full replacement that works exactly like Launchpad, but with more customization options.</p>
+                            <p><strong>To get LaunchMe (Launchpad replacement):</strong></p>
+                            <ol>
+                                <li>Download LaunchMe from the Mac App Store</li>
+                                <li>Open LaunchMe and set your preferred launch shortcut or use default combination</li>
+                                <li>Organize your apps and folders just like you did in Launchpad</li>
+                                <li>Customize wallpapers, icons, and layout to make it yours</li>
+                            </ol>
+                            <p>LaunchMe opens in full-screen mode just like Launchpad did, and you can use it immediately after installation. It's free to use with basic features, and you can unlock premium features with a subscription or lifetime license.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">Is there a customizable app launcher for Mac with live wallpapers and widgets?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>Yes, LaunchMe is a customizable app launcher for Mac that supports both live wallpapers and widgets — features that the original macOS Launchpad never had.</p>
+                            <p><strong>Live Wallpapers:</strong> LaunchMe supports live video wallpapers in MP4, MOV, AVI, and MKV formats. You can set any video file as your launcher background, creating a dynamic and personalized experience. LaunchMe also supports static images (PNG, JPG) and dynamic wallpapers (HEIC) that adapt to your system's Dark/Light mode.</p>
+                            <p><strong>Widgets:</strong> LaunchMe includes widgets support, allowing you to add GIF, Photo, Shapes, Text, Animations, Calendar and more widgets in future.</p>
+                            <p><strong>Additional customization:</strong> Beyond wallpapers and widgets, LaunchMe lets you customize folder styles, app icons, icon sizes, layouts, and system icon themes. All of these features are available in LaunchMe PRO.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false">What's the difference between LaunchMe and the original macOS Launchpad?</button>
+                        <div class="accordion-panel" hidden>
+                            <p>LaunchMe includes all the core functionality of the original macOS Launchpad, but adds significant customization and features that Launchpad never had.</p>
+                            <p><strong>What LaunchMe has that Launchpad had:</strong></p>
+                            <ul>
+                                <li>Full-screen app launcher interface</li>
+                                <li>App organization and grouping</li>
+                                <li>Quick app access</li>
+                                <li>Multi-display support</li>
+                            </ul>
+                            <p><strong>What LaunchMe adds beyond Launchpad:</strong></p>
+                            <ul>
+                                <li><strong>Live video wallpapers</strong> - Set MP4, MOV, AVI, or MKV videos as backgrounds</li>
+                                <li><strong>Widgets</strong> - Add widgets for quick information and actions</li>
+                                <li><strong>Save layouts</strong> - Create different layout pressets you for different tasks</li>
+                                <li><strong>Folder customization</strong> - Colors, emoji, cover images for folders</li>
+                                <li><strong>Custom app icons</strong> - Change any app icon to match your style</li>
+                                <li><strong>File access</strong> - Organize apps and files together in folders</li>
+                                <li><strong>System icon themes</strong> - Dark, Light, or Tinted system icons</li>
+                                <li><strong>Hide apps/titles</strong> - Keep your launcher minimal and clean</li>
+                                <li><strong>Icon size control</strong> - Adjust grid size to fit your screen</li>
+                                <li><strong>Liquid Glass theme</strong> - Modern glassmorphism design</li>
+                                <li><strong>Easy access to your files</strong> - Files Search, Copy files, Copy path, Delete, Preview or show in Finder</li>
+                                <li><strong>Clipboard</strong> - Easy access to history of copied files and text</li>
+                            </ul>
+                            <p>Most importantly, LaunchMe works on macOS 26 Tahoe, where Launchpad was removed by Apple.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--
+          Guides & Articles: internal links to blog for SEO.
+          - Placed after FAQ as requested.
+          - Passes link equity from homepage to blog posts.
+          - Targets long-tail keywords (Launchpad alternative, comparisons).
+        -->
+        <section id="guides" class="section guides">
+            <div class="container">
+                <h2 class="section-title">Guides &amp; Articles</h2>
+                <p class="section-sub">Learn how to get Launchpad back on macOS 26 Tahoe and compare LaunchMe with other app launchers.</p>
+                <ul class="guides-list" style="list-style:none;padding:0;margin:24px 0 0;display:grid;gap:16px;max-width:600px;margin-left:auto;margin-right:auto;">
+                    <li><a href="blog/launchme-update-2-0-notch.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:18px;">LaunchMe Update 2.0: Hello Notch</a></li>
+                    <li><a href="blog/launchme-update-1-118.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:18px;">LaunchMe Update 1.118: New Widgets Unpacking</a></li>
+                    <li><a href="blog/launchme-vs-raycast.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:18px;">LaunchMe vs Raycast</a></li>
+                    <li><a href="blog/launchme-update-1-111.html" style="color:inherit;text-decoration:none;font-weight:600;font-size:18px;">LaunchMe Update 1.111 — New Features Unpacking</a></li>
+                </ul>
+                <p style="margin-top:20px;text-align:center;">
+                    <a href="/blog/" style="font-weight:600;">All articles</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Call To Action -->
+        <section id="download" class="section cta">
+            <div class="container">
+                <div class="cta-pill">
+                    <div class="cta-pill__left">
+                        <h3 class="cta-pill__title">Get LaunchMe<br>and launch apps like a pro</h3>
+                        <a class="lp-btn lp-btn--lg" href="/updates/LaunchMeDirect-2.08.2.dmg" data-ga="direct-dmg" data-ga-area="cta-bottom">
+                            <svg class="apple-glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                            Download for macOS
+                        </a>
+                    </div>
+                    <img class="cta-pill__icon" src="/images/logo-icon.png" alt="LaunchMe app icon">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer: brand + two link columns over an interactive mountains backdrop
+         (the same layers used in the hero) and a large LaunchMe wordmark. -->
+    <footer class="site-footer">
+        <!-- Interactive mountains backdrop (same reveal layers as the hero). -->
+        <div class="footer-bg" data-interactive aria-hidden="true"
+             data-layer-top="/images/Interactive/interactive-layer-2.png"
+             data-layer-reveal="/images/Interactive/interactive-layer-1.png">
+            <canvas></canvas>
+        </div>
+
+        <div class="container footer-top">
+            <div class="footer-brand">
+                <a href="/" class="footer-logo"><img src="/images/logoicontext.png" alt="LaunchMe"></a>
+                <p class="footer-tagline">Your full-screen Mac launcher</p>
+                <p class="footer-desc">LaunchMe brings automation, file search, live wallpapers, widgets, and deep customization into one beautiful full-screen launcher built for macOS 27.</p>
+                <a class="lp-btn lp-btn--lg footer-cta" href="/updates/LaunchMeDirect-2.08.2.dmg" data-ga="direct-dmg" data-ga-area="footer">
+                    <svg class="apple-glyph" viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                    Download for macOS
+                </a>
+                <p class="footer-copy">© 2026 LaunchMe — All rights reserved</p>
+                <p class="footer-author">
+                    Built with <span class="footer-author__love">love</span> by
+                    <a class="footer-author__by" href="https://www.threads.com/@sergey.newton?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer">
+                        <img class="footer-author__avatar" src="/images/sergey-icon.png" alt="Sergey Newton">
+                        Sergey Newton
+                    </a>
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <nav class="footer-col" aria-label="Menu">
+                    <h4 class="footer-col__title">Menu</h4>
+                    <a href="/">Home</a>
+                    <a href="/#features">Features</a>
+                    <a href="/pricing/">Pricing</a>
+                    <a href="/#faq">FAQ</a>
+                    <a href="/blog/">Blog</a>
+                </nav>
+
+                <nav class="footer-col" aria-label="Navigation">
+                    <h4 class="footer-col__title">Navigation</h4>
+                    <a href="/support/">Support</a>
+                    <a href="/help/">Help Center</a>
+                    <a href="/changelog/">Changelog</a>
+                    <a href="/privacy/">Privacy Policy</a>
+                    <a href="/terms/">Terms of Service</a>
+                    <a href="/refunds/">Refund Policy</a>
+                    <a href="/press-assets/">Press Assets</a>
+                </nav>
+
+                <nav class="footer-col" aria-label="Social">
+                    <h4 class="footer-col__title">Social</h4>
+                    <a href="https://www.instagram.com/launchmeapp?igsh=MWZiMW9qamUzYzNjeA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.tiktok.com/@sergey.newton?_r=1&_t=ZS-97T0P0cUuAP" target="_blank" rel="noopener noreferrer">TikTok</a>
+                    <a href="https://www.threads.com/@launchmeapp?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer">Threads</a>
+                    <a href="https://youtube.com/@sergeynewton?si=iqecQRB7wxNSHLgb" target="_blank" rel="noopener noreferrer">YouTube</a>
+                    <a href="https://x.com/sergeynewton?s=11" target="_blank" rel="noopener noreferrer">X</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Oversized wordmark, clipped by the footer's bottom edge. -->
+        <div class="footer-wordmark" aria-hidden="true">LaunchMe</div>
+
+        <script src="/js/interactive-footer.js" defer></script>
+    </footer>
+
+    <!-- Scripts loaded at end for performance -->
+    <script src="/js/main.js"></script>
+
+    <script src="/js/sections.js"></script>
+
+</body>
+</html>
